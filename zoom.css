@@ -1,0 +1,115 @@
+/*Image zoom.  Some CSS is the same as nat-geo-zoom.css and some is different*/
+#zoom {
+	background: rgba(125,125,125,.25);
+	position: fixed;
+	display: block;
+	top: -1400px;
+	left: 10px;
+	right: 10px;
+	border: 2px solid #d0d0d0;
+	z-index: 1001;
+	transition: 1s;
+	-moz-transition: 1s;
+	-webkit-transition: 1s;
+	height: 25rem; /*Replaced vh for Safari support.	Safari 6 and earlier do not recognize vh.*/
+	height: 90vh !important;
+	overflow: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+	#zoom {
+		left: 50px;
+		right: 50px;
+		height: 35rem; /*Replaced vh for Safari support.	Safari 6 and earlier do not recognize vh.*/
+		height: 90vh !important;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	#zoom {
+		left: 200px;
+		right: 200px;
+	}
+}
+
+#zoom a#exit {
+	background-color: rgba(75, 75, 75, .8);
+	color: #ffffff;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 1002;
+	padding: 3px 7px;
+	text-align: center;
+	font-size: 1.4em;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+div#zoom img {
+	max-width: 99%;/*In order to center image within #zoom container it must be contained within width of parent*/
+	position: relative;/*Was positioned absolute but made image jump at first when dragging*/
+	/*left: 0px;  Removed left, right, top, and bottom and set these with JS
+	right: 0px;*/
+	margin: auto;
+	padding-top: 1%;
+	/*top: 0px;
+	bottom: 0px;*/
+}
+
+@media only screen and (max-width: 767px) {
+div#zoom img {
+	max-width: 200%;
+	}
+}
+
+img.hideimage {
+	display: none;
+}
+
+img.displayimage {
+	display: block;
+}
+
+/*Not all versions of Safari and IE recognize cursor: zoom-in.
+Found fix for Safari but left it out due to potential conflicts
+with JS needing to recognize cursor state*/
+img.displayimage:hover {
+	cursor: zoom-in;
+}
+
+img.hideimageafter {
+	display: block;
+}
+
+div.thumbimages {
+	display: inline-block;
+}
+
+/*thumbnail images below main map image*/
+#thumbimage1, #thumbimage2, #thumbimage3 {
+	width: 70px;
+	height: 70px;
+	overflow: hidden;
+	margin: auto;
+	margin-top: 20px;
+}
+
+#thumbimage1:hover, #thumbimage2:hover, #thumbimage3:hover {
+	cursor: pointer;
+}
+
+/*Class name added by JS*/
+#exit.help::before {
+	position: absolute;
+	content: "Tap Once to Zoom";
+	font-size: 18px;
+	z-index: 1002;
+	top: 10px;
+	left: -200px;
+	background-color: rgba(240, 240, 240, .8);
+	color: #000000;
+	border-radius: 5px;
+	padding: 5px;
+}
+/*End image zoom*/

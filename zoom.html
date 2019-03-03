@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Image Zoom</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="zoom.css" />
+</head>
+<body>
+	<div id="zoom">
+		<a id="exit" href="#" onclick="exit()">X</a>
+		<img id="fullimage1" class="hideimage" onclick="zoomIn(this)" onmousedown="dragStart(this, event)" src="large.jpg" alt="Full image" />
+	</div>
+	<div class="thumbimages">
+		<img id="thumbimage1" onclick="zoom(this.id)" src="small.jpg" alt="Thumbnail image" />
+		<p>Click Image</p>
+	</div>
+<!--Display, hide, and zoom images-->
+<script src="zoom.js"></script>
+</body>
+</html>
